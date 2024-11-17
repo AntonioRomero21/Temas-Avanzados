@@ -26,7 +26,7 @@ const sumTime = (queryTimeDocs) => {
     queryTimeDocs.forEach(dataTime => {
         const tiempo = dataTime.data()['Tiempo '];
 
-        const regex = /(\d{1}):(\d{2}):(\d{2}).(\d{6})/;
+        const regex = /(\d):(\d{2}):(\d{2}).(\d{6})/;
         const match = regex.exec(tiempo);
 
         if (match) {

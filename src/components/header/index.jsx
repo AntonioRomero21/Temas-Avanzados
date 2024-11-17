@@ -79,7 +79,7 @@ const Header = () => {
     const end = (
         <div className="flex align-items-center gap-2">
             <Button icon="pi pi-sign-out" onClick={() => { doSignOut().then(() => { navigate('/login') }) }}>Logout</Button>
-            <img src={icon} style={{ width: '30px', height: '25px' }} />
+            <img src={icon} alt=""style={{ width: '30px', height: '25px' }} />
             <h4>{employee.Nombre} {employee.ApellidoP}</h4>
         </div>
     );
