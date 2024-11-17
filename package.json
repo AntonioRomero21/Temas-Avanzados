@@ -1,7 +1,6 @@
 {
   "name": "react-firebase-auth",
   "version": "0.1.0",
-  
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
@@ -14,6 +13,7 @@
     "primeflex": "^3.3.1",
     "primeicons": "^7.0.0",
     "primereact": "^10.8.4",
+    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",
     "react-data-table-component": "^7.6.2",

@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { auth } from "../../firebase/firebase";
 // import { GoogleAuthProvider } from "firebase/auth";
 import { onAuthStateChanged } from "firebase/auth";
+import PropTypes from 'prop-types';
 
 const AuthContext = React.createContext();
 
@@ -41,17 +42,13 @@ export function AuthProvider({ children }) {
     setLoading(false);
   }
 
-  const value = {
-    userLoggedIn,
-    isEmailUser,
-    isGoogleUser,
-    currentUser,
-    setCurrentUser
-  };
 
-  return (
-    <AuthContext.Provider value={value}>
-      {!loading && children}
-    </AuthContext.Provider>
+return (
+  <AuthContext.Provider value={{ currentUser , setCurrentUser , userLoggedIn, isEmailUser , isGoogleUser , loading }}>
+  {children}
+</AuthContext.Provider>
   );
 }
+AuthProvider.propTypes = {
+  children: PropTypes.node.isRequired, // O puedes usar PropTypes.element si solo esperas un único elemento
+};
