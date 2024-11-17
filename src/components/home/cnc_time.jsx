@@ -1,6 +1,7 @@
 import { getFirestore, collection, query, where, getDocs } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
-import icon from 'C:\\Users\\Antonio Romero\\Documents\\GitHub\\Cesat_Report\\src\\assets\\icons\\cnc-machine.svg';
+import PropTypes from 'prop-types';
+import icon from 'C:\\Users\\Antonio Romero\\Documents\\GitHub\\Temas-Avanzados\\src\\assets\\icons\\cnc-machine.svg';
 const db = getFirestore();
 
 export const primaryColor = '#3498db';
@@ -49,21 +50,27 @@ const sumTime = (queryTimeDocs) => {
     totalHours += Math.floor(totalMinutes / 60);
     totalMinutes = totalMinutes % 60; // Mantener solo los minutos restantes
 
-    // Formatear el tiempo total
-    const formattedTime = `${totalHours > 0 ? `${totalHours} hr :` : ''}${totalMinutes.toString().padStart(2, '0')} min :${totalSeconds.toString().padStart(2, '0')} sg`;
-
-    return formattedTime;
+    return `${totalHours > 0 ? `${totalHours} hr :` : ''}${totalMinutes.toString().padStart(2, '0')} min :${totalSeconds.toString().padStart(2, '0')} sg`;
 };
 
-const AnalyticInfoCard = ({ color, svgSrc, title, count, textcolor }) => {
-    return (
-        <div style={{padding: '15px' , flex: '1 1 200px', flexDirection: 'column', textAlign: 'center' }}>
-            <img src={svgSrc} alt={title} style={{ width: '30px', height: '50px' }} />
-            <h3 style={{ color: textcolor, }}>{title}</h3>
-            <p style={{ color: textcolor }}>{count}</p>
-        </div>
-    );
-};
+class AnalyticInfoCard extends React.Component {
+    render() {
+        return (
+            <div style={{ padding: '15px', flex: '1 1 200px', flexDirection: 'column', textAlign: 'center' }}>
+                <img src={this.props.svgSrc} alt={this.props.title} style={{ width: '30px', height: '50px' }} />
+                <h3 style={{ color: this.props.textcolor, }}>{this.props.title}</h3>
+                <p style={{ color: this.props.textcolor }}>{this.props.count}</p>
+            </div>
+        );
+    }
+}
+AnalyticInfoCard.propTypes = {
+    svgSrc: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    count: PropTypes.string.isRequired,
+    textcolor: PropTypes.string.isRequired
+}
+
 const Cnc_Time = () => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -97,7 +104,7 @@ const Cnc_Time = () => {
         <div style={{ display: 'flex', flexDirection: 'row', Wrap: 'wrap' }}>
             {data.map((timeTotal, index) => (
                 <AnalyticInfoCard
-                    key={index}
+                    key={timeTotal.id}
                     color={primaryColor}
                     svgSrc={icon}
                     title={`CNC Machine #${index + 1}`}

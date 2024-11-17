@@ -14,7 +14,7 @@ import { useRoutes } from "react-router-dom";
 
 function App() {
   //const router = "/Cesat_Report"; // Si tu aplicación está en esta subruta
-  const router = "/";
+  const router = "";
 
   const routesArray = [
     {

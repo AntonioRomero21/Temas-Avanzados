@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Navigate } from 'react-router-dom'
 import { doSignInWithEmailAndPassword } from '../../../firebase/auth'
 import { useAuth } from '../../../contexts/authContext'
-import CesatLogo from 'C:\\Users\\Antonio Romero\\Documents\\GitHub\\Cesat_Report\\src\\assets\\Cesat_Logo.png'
+import CesatLogo from 'C:\\Users\\Antonio Romero\\Documents\\GitHub\\Temas-Avanzados\\src\\assets\\Cesat_Logo.png'
 
 const Login = () => {
     const { userLoggedIn } = useAuth()
@@ -24,7 +24,7 @@ const Login = () => {
             {userLoggedIn && (<Navigate to={'/home'} replace={true} />)}
             <main className="w-full h-screen flex self-center place-content-center place-items-center">
                 <div className="w-96 text-gray-600 space-y-5 p-4 shadow-xl border rounded-xl">
-                <img src={CesatLogo} alt="Login" className="w-full h-32 object-cover rounded-t-xl" />
+                    <img src={CesatLogo} alt="Login" className="w-full h-32 object-cover rounded-t-xl" />
                     <div className="text-center">
                         <div className="mt-2">
                             <h3 className="text-gray-800 text-xl font-semibold sm:text-2xl">Login</h3>
@@ -37,26 +37,26 @@ const Login = () => {
                         <div>
                             <label className="text-sm text-gray-600 font-bold">
                                 Email
+                                <input
+                                    type="email"
+                                    autoComplete='email'
+                                    required
+                                    value={email} onChange={(e) => { setEmail(e.target.value) }}
+                                    className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg transition duration-300"
+                                />
                             </label>
-                            <input
-                                type="email"
-                                autoComplete='email'
-                                required
-                                value={email} onChange={(e) => { setEmail(e.target.value) }}
-                                className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg transition duration-300"
-                            />
                         </div>
                         <div>
                             <label className="text-sm text-gray-600 font-bold">
                                 Password
+                                <input
+                                    type="password"
+                                    autoComplete='current-password'
+                                    required
+                                    value={password} onChange={(e) => { setPassword(e.target.value) }}
+                                    className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg transition duration-300"
+                                />
                             </label>
-                            <input
-                                type="password"
-                                autoComplete='current-password'
-                                required
-                                value={password} onChange={(e) => { setPassword(e.target.value) }}
-                                className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg transition duration-300"
-                            />
                         </div>
                         {errorMessage && (
                             <span className='text-red-600 font-bold'>{errorMessage}</span>

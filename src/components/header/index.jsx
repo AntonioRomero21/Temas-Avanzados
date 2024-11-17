@@ -4,10 +4,10 @@ import { useAuth } from '../../contexts/authContext'
 import { doSignOut } from '../../firebase/auth'
 import { Menubar } from 'primereact/menubar';
 import { Button } from 'primereact/button';
-import CesatLogo from 'C:\\Users\\Antonio Romero\\Documents\\GitHub\\Cesat_Report\\src\\assets\\Cesat_Logo.png'
-import { collection, getDoc, getDocs, query, where } from 'firebase/firestore';
+import CesatLogo from 'C:\\Users\\Antonio Romero\\Documents\\GitHub\\Temas-Avanzados\\src\\assets\\Cesat_Logo.png'
+import { collection, getDocs, query, where } from 'firebase/firestore';
 import { db } from '../../firebase/firebase';
-import icon from 'C:\\Users\\Antonio Romero\\Documents\\GitHub\\Cesat_Report\\src\\assets\\icons\\empleado.svg';
+import icon from 'C:\\Users\\Antonio Romero\\Documents\\GitHub\\Temas-Avanzados\\src\\assets\\icons\\empleado.svg';
 
 const Header = () => {
     const navigate = useNavigate()
@@ -23,7 +23,6 @@ const Header = () => {
 
     useEffect(() => {
         if (userLoggedIn) {
-            console.log(currentUser);
             if (currentUser.email) {
                 const docRef = collection(db, "Empleados");
                 const q = query(docRef, where("correo", "==", currentUser.email));

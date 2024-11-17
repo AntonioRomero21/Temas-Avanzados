@@ -41,36 +41,36 @@ const Project = () => {
                         <div>
                             <label className="text-sm text-gray-600 font-bold">
                                 Ingrese el nombre del Proyecto
+                                <input
+                                    type="text"
+                                    autoComplete='text'
+                                    required
+                                    value={proyecto}
+                                    onChange={(e) => {
+                                        console.log(e.target.value)
+                                        setProyecto(e.target.value)
+                                        console.log('El proyecto es: ' + proyecto)
+                                    }}
+                                    className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg transition duration-300"
+                                />
                             </label>
-                            <input
-                                type="text"
-                                autoComplete='text'
-                                required
-                                value={proyecto}
-                                onChange={(e) => {
-                                    console.log(e.target.value)
-                                    setProyecto(e.target.value)
-                                    console.log('El proyecto es: ' + proyecto)
-                                }}
-                                className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg transition duration-300"
-                            />
                         </div>
                         <div>
                             <label className="text-sm text-gray-600 font-bold">
                                 Ingrese el nombre de la empresa
-                            </label>
-                            <input
-                                type="text"
-                                autoComplete='text'
-                                required
-                                value={empresa} onChange={(e) => {
-                                    console.log(e.target.value)
-                                    setEmpresa(e.target.value)
-                                    console.log('La empresa es: ' + empresa)
-                                }}
+                                <input
+                                    type="text"
+                                    autoComplete='text'
+                                    required
+                                    value={empresa} onChange={(e) => {
+                                        console.log(e.target.value)
+                                        setEmpresa(e.target.value)
+                                        console.log('La empresa es: ' + empresa)
+                                    }}
 
-                                className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg transition duration-300"
-                            />
+                                    className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg transition duration-300"
+                                />
+                            </label>
                         </div>
                         {errorMessage && (
                             <span className='text-red-600 font-bold'>{errorMessage}</span>

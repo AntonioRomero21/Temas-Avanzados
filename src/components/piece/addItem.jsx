@@ -7,7 +7,7 @@ import { db } from '../../firebase/firebase'
 const Project = () => {
     const [pieza, setItem] = useState('')
     const [errorMessage] = useState('')
-    const [isAddItem,setIsAddItem] = useState(false)
+    const [isAddItem, setIsAddItem] = useState(false)
     const proj = useParams().Proyecto;
 
     const { handleSubmit } = useForm();
@@ -42,31 +42,31 @@ const Project = () => {
                         <div>
                             <label className="text-sm text-gray-600 font-bold">
                                 Ingrese el nombre de la pieza
-                            </label>
-                            <input
-                                type="text"
-                                autoComplete='text'
-                                required
-                                value={pieza}
-                                onChange={(e) => {
-                                    setItem(e.target.value)
-                                }}
+                                <input
+                                    type="text"
+                                    autoComplete='text'
+                                    required
+                                    value={pieza}
+                                    onChange={(e) => {
+                                        setItem(e.target.value)
+                                    }}
 
-                                className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg transition duration-300"
-                            />
+                                    className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg transition duration-300"
+                                />
+                            </label>
                         </div>
                         <div>
                             <label className="text-sm text-gray-600 font-bold">
                                 Ingrese el nombre del Proyecto
+                                <input
+                                    type="text"
+                                    autoComplete='text'
+                                    required
+                                    value={proj}
+                                    readOnly={true}
+                                    className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg transition duration-300"
+                                />
                             </label>
-                            <input
-                                type="text"
-                                autoComplete='text'
-                                required
-                                value={proj}
-                                readOnly={true}
-                                className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg transition duration-300"
-                            />
                         </div>
                         {errorMessage && (
                             <span className='text-red-600 font-bold'>{errorMessage}</span>

@@ -7,15 +7,14 @@ const Employee_Time_Table = () => {
 
     useEffect(() => {
         const fetchData = async () => {
+            const docRef = collection(db, "TimeOperation");
             try {
-                const docRef = collection(db, "TimeOperation");
-                getDocs(docRef).then((resp) => {
-                    setTimeOP(
-                        resp.docs.map((doc) => {
-                            return { ...doc.data(), id: doc.id }
-                        })
-                    )
-                })
+                const resp = await getDocs(docRef);
+                const timeOperations = resp.docs.map(doc => ({
+                    ...doc.data(),
+                    id: doc.id
+                }));
+                setTimeOP(timeOperations);
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
@@ -67,7 +66,7 @@ const Employee_Time_Table = () => {
                             acc[name].tiempo += convertTimeToSeconds(current["Tiempo "]);
                         }
                         return acc;
-                    }, {})).map((item, index) => {
+                    }, {})).map((item) => {
                         const totalTime = Object.values(timeOp.reduce((acc, current) => {
                             if (current["Tiempo "]) {
                                 acc.total = (acc.total || 0) + convertTimeToSeconds(current["Tiempo "]);
@@ -78,7 +77,7 @@ const Employee_Time_Table = () => {
                         const percentage = ((item.tiempo / totalTime) * 100).toFixed(1);
 
                         return (
-                            <tr key={index}>
+                            <tr key={item.id}>
                                 <td className="px-6 py-4 border-b">{item.Empleado}</td>
                                 <td className="px-6 py-4 border-b">{convertSecondsToTimeFormat(item.tiempo)}</td>
                                 <td className="px-6 py-4 border-b">{percentage}%</td>
