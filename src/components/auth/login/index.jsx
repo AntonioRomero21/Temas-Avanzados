@@ -37,6 +37,7 @@ const Login = () => {
                         <div>
                             <label className="text-sm text-gray-600 font-bold">
                                 Email
+                                {/* */}
                                 <input
                                     type="email"
                                     autoComplete='email'
@@ -49,6 +50,7 @@ const Login = () => {
                         <div>
                             <label className="text-sm text-gray-600 font-bold">
                                 Password
+                                {/* */}
                                 <input
                                     type="password"
                                     autoComplete='current-password'

@@ -41,6 +41,7 @@ const Project = () => {
                         <div>
                             <label className="text-sm text-gray-600 font-bold">
                                 Ingrese el nombre del Proyecto
+                                {/* */}
                                 <input
                                     type="text"
                                     autoComplete='text'
@@ -58,6 +59,7 @@ const Project = () => {
                         <div>
                             <label className="text-sm text-gray-600 font-bold">
                                 Ingrese el nombre de la empresa
+                                {/* */}
                                 <input
                                     type="text"
                                     autoComplete='text'

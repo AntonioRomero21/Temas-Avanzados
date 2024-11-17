@@ -28,12 +28,10 @@ const ViewProject = () => {
       <div className="container">
         <h2 className=".main-title font-bold text-xl">{toCapital(titulo)}</h2>
         <div className="productos">
-          {proyectos.map((proj) => <div className="producto">
-            <div key={proj.id}>
+          {proyectos.map((proj) => <div className="producto" key={proj.id}>
               <h4>Proyecto: {proj.Proyecto}</h4>
               <p>Compañia: {toCapital(proj.Compañia)}</p>
               <Link className="ver-mas" to={`/project/${proj.Proyecto}`}>Ver más</Link>
-            </div>
           </div>)}
         </div>
       </div>

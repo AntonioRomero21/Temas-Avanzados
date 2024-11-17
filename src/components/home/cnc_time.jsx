@@ -50,7 +50,15 @@ const sumTime = (queryTimeDocs) => {
     totalHours += Math.floor(totalMinutes / 60);
     totalMinutes = totalMinutes % 60; // Mantener solo los minutos restantes
 
-    return `${totalHours > 0 ? `${totalHours} hr :` : ''}${totalMinutes.toString().padStart(2, '0')} min :${totalSeconds.toString().padStart(2, '0')} sg`;
+    const formattedHours = totalHours > 0 ? `${totalHours} hr` : '';
+    const formattedMinutes = totalMinutes.toString().padStart(2, '0') + ' min';
+    const formattedSeconds = totalSeconds.toString().padStart(2, '0') + ' sg';
+    
+    const result = [formattedHours, formattedMinutes, formattedSeconds]
+        .filter(part => part) // Filtra las partes vacías
+        .join(' : '); // Une las partes con ' : '
+    
+    return result;
 };
 
 class AnalyticInfoCard extends React.Component {

@@ -11,11 +11,11 @@ const Home = () => {
         <div>
             <ResponsiveContainer width="100%" height="100%">
                 <CncTime />
-                <div class='grid grid-col-1 :grid-col-2 gap-8 mb-8'>
+                <div className='grid grid-col-1 :grid-col-2 gap-8 mb-8'>
                     <ProjectTimeBar />
                     <EmployeeTimeTable />
                 </div>
-                <div class='grid grid-col-1 :grid-col-2 gap-8 mb-8'>
+                <div className='grid grid-col-1 :grid-col-2 gap-8 mb-8'>
                     <MonthlyProduction />
                     <WeeklyProduction />
                 </div>
